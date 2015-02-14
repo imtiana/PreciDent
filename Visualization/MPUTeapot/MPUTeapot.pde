@@ -50,7 +50,7 @@ float[] euler = new float[3];
 float[] ypr = new float[3];
 
 void setup() {
-    // Screensize viewport using OpenGL rendering
+    // Screensize 300px square viewport using OpenGL rendering
     size(1200, 800, OPENGL);
     gfx = new ToxiclibsSupport(this);
 
@@ -103,17 +103,40 @@ void draw() {
     float[] axis = quat.toAxisAngle();
     rotate(axis[0], -axis[1], axis[3], axis[2]);
 
-    // draw torso
-    fill(250, 226, 170, 200);
-    box(30, 80, 200);
+    // torso
+    fill(250, 526, 170, 200); // color
+    box(80, 30, 200);
     
-    // draw head
-    fill(250, 226, 170, 200);
+    //upper body
+    pushMatrix();
+      fill(550, 226, 170, 200); // color 
+      translate(0, 0, -120);
+      box(50, 50, 50);
+    
+    // head
+    pushMatrix();
+    fill(250, 226, 170, 200); // color 
+    translate(0, 0, -140);
+    box(50, 50, 50);
+    popMatrix();
+    
+    // neck
+    fill(250, 226, 170, 200); // color
     pushMatrix();
     translate(0, 0, -120);
     rotateX(PI/2);
     drawCylinder(0, 20, 20, 8);
     popMatrix();
+    
+    // head2
+    pushMatrix();
+    fill(900, 226, 170, 200); // color 
+    translate(0, 0, -900);
+    box(50, 50, 50);
+    popMatrix();
+    
+    popMatrix();
+    
     
     // draw wings and tail fin in green
     fill(250, 226, 170, 200);
@@ -233,4 +256,7 @@ void drawCylinder(float topRadius, float bottomRadius, float tall, int sides) {
         }
         endShape();
     }
+}
+
+void drawSphere(double r, int lats, int longs) {
 }
