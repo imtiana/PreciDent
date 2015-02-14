@@ -110,29 +110,25 @@ void draw() {
     //upper body
     pushMatrix();
       fill(550, 226, 170, 200); // color 
-      translate(0, 0, -120);
-      box(50, 50, 50);
+      translate(0, 0, -125);
+      box(80, 30, 50);
     
-    // head
-    pushMatrix();
-    fill(250, 226, 170, 200); // color 
-    translate(0, 0, -140);
-    box(50, 50, 50);
-    popMatrix();
     
-    // neck
-    fill(250, 226, 170, 200); // color
+      //neck
+            pushMatrix();
+          fill(250, 226, 170, 200); // color
     pushMatrix();
-    translate(0, 0, -120);
+    translate(0, 0, -45);
     rotateX(PI/2);
     drawCylinder(0, 20, 20, 8);
-    popMatrix();
+    rotateX(-PI/2);
     
-    // head2
-    pushMatrix();
-    fill(900, 226, 170, 200); // color 
-    translate(0, 0, -900);
+      // head
+    fill(250, 226, 170, 200); // color 
+    translate(0, 0, -20);
     box(50, 50, 50);
+    popMatrix();
+
     popMatrix();
     
     popMatrix();
