@@ -109,14 +109,14 @@ void draw() {
     
     //upper body
     pushMatrix();
-      fill(550, 226, 170, 200); // color 
+      fill(550, 20, 170, 200); // color 
       translate(0, 0, -125);
       box(80, 30, 50);
     
     
-      //neck
-            pushMatrix();
-          fill(250, 226, 170, 200); // color
+        //neck
+        pushMatrix();
+        fill(0, 900, 170, 200); // color
     pushMatrix();
     translate(0, 0, -45);
     rotateX(PI/2);
@@ -124,7 +124,7 @@ void draw() {
     rotateX(-PI/2);
     
       // head
-    fill(250, 226, 170, 200); // color 
+    fill(0, 900, 170, 200); // color 
     translate(0, 0, -20);
     box(50, 50, 50);
     popMatrix();
