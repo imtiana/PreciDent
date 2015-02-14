@@ -50,8 +50,8 @@ float[] euler = new float[3];
 float[] ypr = new float[3];
 
 void setup() {
-    // 300px square viewport using OpenGL rendering
-    size(600, 600, OPENGL);
+    // Screensize viewport using OpenGL rendering
+    size(1200, 800, OPENGL);
     gfx = new ToxiclibsSupport(this);
 
     // setup lights and antialiasing
