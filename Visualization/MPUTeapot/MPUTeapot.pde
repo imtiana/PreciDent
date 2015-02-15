@@ -66,7 +66,7 @@ void draw() {
     //static body
     pushMatrix();
     rotateY(PI/6);
-    fill(900, 526, 170, 200); // color
+    fillClothesColor();
     box(80, 200, 30);
     //rotateY(-PI/6);
      
@@ -90,31 +90,32 @@ void draw() {
     
     //upper body
     pushMatrix();
-      fill(250, 526, 170, 200); // color 
+      fillClothesColor();
       translate(0, 0, -125);
       box(80, 30, 50);
     
           pushMatrix();
 
           //neck
-          fill(250, 526, 170, 200); // color
+          fillSkinColor(); 
           translate(0, 0, -45);
           rotateX(PI/2);
           drawCylinder(0, 20, 20, 8);
           rotateX(-PI/2);
     
           // head
-          fill(250, 526, 170, 200); // color 
+          fillSkinColor(); 
           translate(0, 0, -20);
           box(50, 50, 50);
                      
+              // eyes
               pushMatrix();
-              fill(0, 50, 50, 200); // color 
+              fill(0, 0, 0, 200);
               translate(-15, -25, 3); // across, depth, heigtht
               box(10, 10, 10);
               popMatrix();
  
-              fill(0, 50, 50, 200); // color 
+              fill(0, 0, 0, 200);
               translate(10, -25, 3);
               box(10, 10, 10);
               
@@ -147,6 +148,7 @@ void draw() {
     popMatrix();
     popMatrix();
 }
+
 
 void serialEvent(Serial port) {
     interval = millis();
@@ -250,3 +252,12 @@ void drawCylinder(float topRadius, float bottomRadius, float tall, int sides) {
 
 void drawSphere(double r, int lats, int longs) {
 }
+
+void fillSkinColor() {
+   fill(255,224,189, 200);
+}
+
+void fillClothesColor() {
+   fill(255,255,255, 200);
+}
+
