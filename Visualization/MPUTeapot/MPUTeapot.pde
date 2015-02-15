@@ -1,33 +1,6 @@
 // I2C device class (I2Cdev) demonstration Processing sketch for MPU6050 DMP output
 // 6/20/2012 by Jeff Rowberg <jeff@rowberg.net>
 // Updates should (hopefully) always be available at https://github.com/jrowberg/i2cdevlib
-//
-// Changelog:
-//     2012-06-20 - initial release
-
-/* ============================================
-I2Cdev device library code is placed under the MIT license
-Copyright (c) 2012 Jeff Rowberg
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-===============================================
-*/
 
 import processing.serial.*;
 import processing.opengl.*;
@@ -88,14 +61,22 @@ void draw() {
     
     // translate everything to the middle of the viewport
     pushMatrix();
-    translate(width / 2, height / 2);
+    translate(width / 2, height / 2 + 100);
 
+    //static body
+    pushMatrix();
+    rotateY(PI/6);
+    fill(900, 526, 170, 200); // color
+    box(80, 200, 30);
+    //rotateY(-PI/6);
+     
     // 3-step rotation from yaw/pitch/roll angles (gimbal lock!)
     // ...and other weirdness I haven't figured out yet
     //rotateY(-ypr[0]);
     //rotateZ(-ypr[1]);
     //rotateX(-ypr[2]);
 
+    pushMatrix();
     // toxiclibs direct angle/axis rotation from quaternion (NO gimbal lock!)
     // (axis order [1, 3, 2] and inversion [-1, +1, +1] is a consequence of
     // different coordinate system orientation assumptions between Processing
@@ -104,37 +85,47 @@ void draw() {
     rotate(axis[0], -axis[1], axis[3], axis[2]);
 
     // torso
-    fill(250, 526, 170, 200); // color
-    box(80, 30, 200);
+    //fill(250, 526, 170, 200); // color
+    //box(80, 30, 200);
     
     //upper body
     pushMatrix();
-      fill(550, 20, 170, 200); // color 
+      fill(250, 526, 170, 200); // color 
       translate(0, 0, -125);
       box(80, 30, 50);
     
-    
-        //neck
-        pushMatrix();
-        fill(0, 900, 170, 200); // color
-    pushMatrix();
-    translate(0, 0, -45);
-    rotateX(PI/2);
-    drawCylinder(0, 20, 20, 8);
-    rotateX(-PI/2);
-    
-      // head
-    fill(0, 900, 170, 200); // color 
-    translate(0, 0, -20);
-    box(50, 50, 50);
-    popMatrix();
+          pushMatrix();
 
-    popMatrix();
+          //neck
+          fill(250, 526, 170, 200); // color
+          translate(0, 0, -45);
+          rotateX(PI/2);
+          drawCylinder(0, 20, 20, 8);
+          rotateX(-PI/2);
+    
+          // head
+          fill(250, 526, 170, 200); // color 
+          translate(0, 0, -20);
+          box(50, 50, 50);
+                     
+              pushMatrix();
+              fill(0, 50, 50, 200); // color 
+              translate(-15, -25, 3); // across, depth, heigtht
+              box(10, 10, 10);
+              popMatrix();
+ 
+              fill(0, 50, 50, 200); // color 
+              translate(10, -25, 3);
+              box(10, 10, 10);
+              
+          popMatrix();
     
     popMatrix();
-    
-    
+      
+     // draw arms here 
+     
     // draw wings and tail fin in green
+    /*
     fill(250, 226, 170, 200);
     beginShape(TRIANGLES);
     vertex(-100,  2, 30); vertex(0,  2, -80); vertex(100,  2, 30);  // wing top layer
@@ -150,7 +141,10 @@ void draw() {
     vertex(-2,   0, 98); vertex(2,   0, 98); vertex(2,   0, 70); vertex(-2,   0, 70);
     vertex(-2, -30, 98); vertex(2, -30, 98); vertex(2,   0, 70); vertex(-2,   0, 70);
     endShape();
+    */
+    popMatrix();
     
+    popMatrix();
     popMatrix();
 }
 
