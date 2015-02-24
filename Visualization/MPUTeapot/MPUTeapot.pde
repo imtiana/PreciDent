@@ -88,8 +88,11 @@ void draw() {
     //fill(250, 526, 170, 200); // color
     //box(80, 30, 200);
    
+    //rotate on right axis
     rotateX(PI/2);
     rotateZ(PI/2);
+    
+    rotateX(-PI/2); // stand upright
     
     //upper body
     pushMatrix();
