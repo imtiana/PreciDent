@@ -24,7 +24,7 @@ float[] ypr = new float[3];
 
 void setup() {
     // Screensize 300px square viewport using OpenGL rendering
-    size(1200, 800, OPENGL);
+    size(500, 500, OPENGL);
     gfx = new ToxiclibsSupport(this);
 
     // setup lights and antialiasing
@@ -68,10 +68,10 @@ void draw() {
     translate(0, 0, -125);
     rotateY(PI/2);
     rotateY(PI/6);
-    rotateX(PI/6);
+    rotateX(PI/8); // plane tilt
     fillRed();
-    box(200, 200, 5);
-    rotateX(-PI/6);
+    box(200, 200, 1);
+    rotateX(-PI/8);
     rotateY(-PI/2);
     rotateY(-PI/6);
     //rotateX(-PI/6);
