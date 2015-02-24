@@ -65,10 +65,11 @@ void draw() {
 
     //static body
     pushMatrix();
-    rotateY(PI/6);
-    //fillClothesColor();
-    //box(80, 200, 30);
-    //rotateY(-PI/6);
+    translate(0, 0, -125);
+    rotateY(PI/2);
+    fillRed();
+    box(200, 200, 5);
+    rotateY(-PI/2);
      
     // 3-step rotation from yaw/pitch/roll angles (gimbal lock!)
     // ...and other weirdness I haven't figured out yet
@@ -267,3 +268,6 @@ void fillClothesColor() {
    fill(255,255,255, 200);
 }
 
+void fillRed() {
+   fill(255,0,0, 200);
+}
