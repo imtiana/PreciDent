@@ -66,15 +66,15 @@ void draw() {
     //static body
     pushMatrix();
     rotateY(PI/6);
-    fillClothesColor();
-    box(80, 200, 30);
+    //fillClothesColor();
+    //box(80, 200, 30);
     //rotateY(-PI/6);
      
     // 3-step rotation from yaw/pitch/roll angles (gimbal lock!)
     // ...and other weirdness I haven't figured out yet
-    //rotateY(-ypr[0]);
-    //rotateZ(-ypr[1]);
-    //rotateX(-ypr[2]);
+    rotateY(-ypr[0]);
+    rotateZ(-ypr[1]);
+    rotateX(-ypr[2]);
 
     pushMatrix();
     // toxiclibs direct angle/axis rotation from quaternion (NO gimbal lock!)
@@ -87,6 +87,9 @@ void draw() {
     // torso
     //fill(250, 526, 170, 200); // color
     //box(80, 30, 200);
+   
+    rotateX(PI/2);
+    rotateZ(PI/2);
     
     //upper body
     pushMatrix();
