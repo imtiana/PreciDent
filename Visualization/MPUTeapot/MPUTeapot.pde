@@ -68,10 +68,13 @@ void draw() {
     translate(0, 0, -125);
     rotateY(PI/2);
     rotateY(PI/6);
+    rotateX(PI/6);
     fillRed();
     box(200, 200, 5);
+    rotateX(-PI/6);
     rotateY(-PI/2);
     rotateY(-PI/6);
+    //rotateX(-PI/6);
      
     // 3-step rotation from yaw/pitch/roll angles (gimbal lock!)
     // ...and other weirdness I haven't figured out yet
