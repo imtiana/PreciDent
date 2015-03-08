@@ -44,7 +44,7 @@ void setup() {
     port = new Serial(this, portName, 115200);
     
     // send single character to trigger DMP init/start
-    // (expected by MPU6050_DMP6 example Arduino sketch)
+    // (expected by MPU6050_DMP6 example Ardu ino sketch)
     port.write('r');
 }
 
@@ -70,7 +70,7 @@ void draw() {
     rotateY(PI/6);
     rotateX(PI/8); // plane tilt
     fillRed();
-    box(200, 200, 1);
+    //box(200, 200, 1);
     rotateX(-PI/8);
     rotateY(-PI/2);
     rotateY(-PI/6);

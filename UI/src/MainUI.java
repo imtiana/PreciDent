@@ -8,7 +8,6 @@ public class MainUI extends JFrame {
 	}
 	
     private void initUI() {
-        
         setTitle("Simple example");
         setSize(300, 200);
         setLocationRelativeTo(null);
