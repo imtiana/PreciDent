@@ -30,8 +30,14 @@ void setup() {
   output = createWriter( y + "-" + m + "-" + d + ", " + h + minString + ".csv" );
   
   //designate serial port to read from
-  myPort = new Serial(this, "COM10", 9600);
-  output.println("time,red,green,blue,green2,blue2,orange");
+  myPort = new Serial(this, "COM4", 115200);
+  output.println("time,yaw,pitch,roll");
+  
+  println("Connected, delay 100 ms");
+  delay(500);
+  myPort.write(' ');
+  println("Sent Character, delay 100ms");
+  delay(100);
 }
 
 void draw() {

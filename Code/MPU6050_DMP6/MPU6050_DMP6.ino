@@ -114,9 +114,11 @@ MPU6050 mpu;
 
 // uncomment "OUTPUT_TEAPOT" if you want output that matches the
 // format used for the InvenSense teapot demo
-#define OUTPUT_TEAPOT
+//#define OUTPUT_TEAPOT
 
-
+// uncomment "OUTPUT_PROCESSING" if you want output that works with the 
+// Processing .csv reader for output to Precident WebAppp
+#define OUTPUT_PROCESSING
 
 #define LED_PIN 13 // (Arduino is 13, Teensy is 11, Teensy++ is 6)
 bool blinkState = false;
@@ -365,6 +367,16 @@ void loop() {
             teapotPacket[9] = fifoBuffer[13];
             Serial.write(teapotPacket, 14);
             teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
+        #endif
+        
+        #ifdef OUTPUT_PROCESSING
+            // display ypr values in format for Processing:
+            Serial.print(ypr[0] * 180/M_PI);
+            Serial.print(",");
+            Serial.print(ypr[1] * 180/M_PI);
+            Serial.print(",");
+            Serial.println(ypr[2] * 180/M_PI);
+            Serial.print("e");
         #endif
 
         // blink LED to indicate activity
