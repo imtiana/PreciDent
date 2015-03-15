@@ -123,12 +123,12 @@ void draw() {
               // eyes
               pushMatrix();
               fill(0, 0, 0, 200);
-              translate(-15, -25, 3); // across, depth, heigtht
+              translate(-15, 25, 3); // across, depth, heigtht
               box(10, 10, 10);
               popMatrix();
  
               fill(0, 0, 0, 200);
-              translate(10, -25, 3);
+              translate(10, 25, 3);
               box(10, 10, 10);
               
           popMatrix();
