@@ -8,6 +8,7 @@ String minString;
 String secString;
 int sec;
 int position;
+int nowTemp; //for wait after connectino with MPU
 
 void setup() {
   
@@ -30,8 +31,26 @@ void setup() {
   output = createWriter( y + "-" + m + "-" + d + ", " + h + minString + ".csv" );
   
   //designate serial port to read from
-  myPort = new Serial(this, "COM10", 9600);
-  output.println("time,red,green,blue,green2,blue2,orange");
+  myPort = new Serial(this, "COM4", 115200);
+  output.println("time,yaw,pitch,roll");
+  
+  nowTemp = millis();
+  while(millis() - nowTemp < 3000) {
+  
+  }
+  println("Connected, delay 100 ms");
+  nowTemp = millis();
+  while(millis() - nowTemp < 3000) {
+  
+  }
+  myPort.write(' ');
+  println("Sent Character, delay 100ms");
+  nowTemp = millis();
+  while(millis() - nowTemp < 3000) {
+  
+  }
+  println("Starting!");
+  nowTemp = millis();
 }
 
 void draw() {
@@ -66,11 +85,12 @@ void draw() {
     }
     
     //output data to csv file
-    output.print(h); 
-    output.print(':');
-    output.print(minString);
-    output.print(':');
-    output.print(secString + ",");
+//    output.print(h); 
+//    output.print(':');
+//    output.print(minString);
+//    output.print(':');
+//    output.print(secString + ",");
+    output.print((millis()-nowTemp)/1000.0 + ",");
     output.println(data);
     println(data);
     data = "";
