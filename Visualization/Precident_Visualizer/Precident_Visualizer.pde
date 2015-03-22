@@ -41,18 +41,18 @@ void setup() {
     String portName = "COM3";
     
     // open the serial port
-    port = new Serial(this, portName, 115200);
+//uncomment for arduino response    port = new Serial(this, portName, 115200);
     
     // send single character to trigger DMP init/start
     // (expected by MPU6050_DMP6 example Ardu ino sketch)
-    port.write('r');
+//uncomment for arduino response    port.write('r');
 }
 
 void draw() {
     if (millis() - interval > 1000) {
         // resend single character to trigger DMP init/start
         // in case the MPU is halted/reset while applet is running
-        port.write('r');
+//uncomment for arduino response        port.write('r');
         interval = millis();
     }
     
@@ -62,6 +62,7 @@ void draw() {
     // translate everything to the middle of the viewport
     pushMatrix();
     translate(width / 2, height / 2 + 100);
+
 
     //static body
     pushMatrix();
@@ -98,41 +99,60 @@ void draw() {
     rotateX(PI/2);
     rotateZ(PI/2);
     
-    rotateX(-PI/2); // stand upright
+    //rotateX(-PI/2); // stand upright
+    
+    
+//TEST GEOMETRY CODE (REMOVE AFTER)
+rotateX(PI);
+rotateZ(-PI/2);
+//rotateX(PI/2);
+//rotateY(PI/2);
+//translate(width/10, -height);
     
     //upper body
     pushMatrix();
-      fillClothesColor();
-      translate(0, 50, -50);
-      box(80, 30, 50);
+    fillClothesColor();
+    translate(0, 50, -50);
+    box(70, 30, 50);
     
-          pushMatrix();
+    pushMatrix();
 
-          //neck
-          fillSkinColor(); 
-          translate(0, 0, -45);
-          rotateX(PI/2);
-          drawCylinder(0, 20, 20, 8);
-          rotateX(-PI/2);
-    
-          // head
-          fillSkinColor(); 
-          translate(0, 0, -20);
-          box(50, 50, 50);
-                     
-              // eyes
-              pushMatrix();
-              fill(0, 0, 0, 200);
-              translate(-15, 25, 3); // across, depth, heigtht
-              box(10, 10, 10);
-              popMatrix();
+//SHOULDER CODE
+translate(-45, 0, -10); 
+box(20, 30, 30);
+pushMatrix();
+translate(45,0,10);
+
+translate(45, 0, -10); 
+box(20, 30, 30);
+pushMatrix();
+translate(-45,0,10);
+
+    //neck
+    fillSkinColor(); 
+    translate(0, 0, -45);
+    rotateX(PI/2);
+    drawCylinder(0, 20, 20, 8);
+    rotateX(-PI/2);
+
+    // head
+    fillSkinColor(); 
+    translate(0, 0, -20);
+    box(50, 50, 50);
+               
+    // eyes
+    pushMatrix();
+    fill(0, 0, 0, 200);
+    translate(-15, 25, 3); // across, depth, heigtht
+    box(10, 10, 10);
+    popMatrix();
  
-              fill(0, 0, 0, 200);
-              translate(10, 25, 3);
-              box(10, 10, 10);
-              
-          popMatrix();
-    
+    fill(0, 0, 0, 200);
+    translate(10, 25, 3);
+    box(10, 10, 10);
+        
+    popMatrix();
+    popMatrix();
     popMatrix();
       
      // draw arms here 
@@ -156,7 +176,7 @@ void draw() {
     endShape();
     */
     popMatrix();
-    
+    popMatrix();
     popMatrix();
     popMatrix();
 }
