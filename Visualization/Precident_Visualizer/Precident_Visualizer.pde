@@ -24,7 +24,7 @@ float[] ypr = new float[3];
 
 void setup() {
     // Screensize 300px square viewport using OpenGL rendering
-    size(500, 500, OPENGL);
+    size(1200, 800, OPENGL);
     gfx = new ToxiclibsSupport(this);
 
     // setup lights and antialiasing
@@ -61,8 +61,10 @@ void draw() {
     
     // translate everything to the middle of the viewport
     pushMatrix();
-    translate(width / 2, height / 2 + 100);
-
+    translate(width / 2, height / 2 + 500);
+    
+    scale(7, 7, 7); 
+                  
     //static body
     pushMatrix();
     translate(0, 0, -125);
