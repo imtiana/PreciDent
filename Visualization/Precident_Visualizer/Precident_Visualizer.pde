@@ -14,13 +14,11 @@ char[] teapotPacket = new char[14];  // InvenSense Teapot packet
 int serialCount = 0;                 // current packet byte position
 int synced = 0;
 int interval = 0;
-short[] leftShoulderTranslationVal = new short[3]
-leftShoulderTranslationVal[0] = 45; leftShoulderTranslationVal[1] = 0; leftShoulderTranslationVal[2] = 10;
-short[] rightShoulderTranslationVal = new short[3];
-rightShoulderTranslationVal[0]= -45; rightShoulderTranslationVal[1] = 0; rightShoulderTranslationVal[2] = 10;
-//short[] leftShoulderRotationVal = new ;
-short[] rightShoulderRotationVal = new short[3];
-rightShoulderRotationVal[0] = 0.3; rightShoulderRotationVal[1] = 0.3; rightShoulderRotationVal[2] = 0;
+float[] rightShoulderTranslationVal = {45, 0, -10};
+float[] leftShoulderTranslationVal = {-45, 0, -10};
+float[] leftShoulderRotationVal = {0, 0, 0};
+float[] rightShoulderRotationVal = {0, 0, 0};
+//bad shoulder posture {0.2, 0.05, 0.3}
 
 float[] q = new float[4];
 Quaternion quat = new Quaternion(1, 0, 0, 0);
@@ -111,7 +109,7 @@ void draw() {
     
 //TEST GEOMETRY CODE (REMOVE AFTER)
 rotateX(PI);
-rotateZ(-PI/2);
+rotateZ(-2*PI/3);
 //rotateX(PI/2);
 //rotateY(PI/2);
 //translate(width/10, -height);
@@ -123,24 +121,7 @@ rotateZ(-PI/2);
     box(70, 30, 50);
     
     pushMatrix();
-
-//SHOULDER CODE
-translate(rightShoulderTranslationVal[0], rightShoulderTranslationVal[1], rightShoulderTranslationVal[2]); 
-box(20, 30, 30);
-rotateX(rightShoulderRotationVal[0]);
-rotateY(rightShoulderRotationVal[1]);
-rotateZ(rightShoulderRotationVal[2]);
-pushMatrix();
-rotateX(-rightShoulderRotationVal[0]);
-rotateY(-rightShoulderRotationVal[1]);
-rotateZ(-rightShoulderRotationVal[2]);
-translate(-rightShoulderTranslationVal[0], -rightShoulderTranslationVal[1], -rightShoulderTranslationVal[2]);
-
-translate(leftShoulderTranslationVal[0], leftShoulderTranslationVal[1], leftShoulderTranslationVal[2]); 
-box(20, 30, 30);
-pushMatrix();
-translate(-leftShoulderTranslationVal[0], -leftShoulderTranslationVal[1], -leftShoulderTranslationVal[2]);
-
+    
     //neck
     fillSkinColor(); 
     translate(0, 0, -45);
@@ -163,7 +144,25 @@ translate(-leftShoulderTranslationVal[0], -leftShoulderTranslationVal[1], -leftS
     fill(0, 0, 0, 200);
     translate(10, 25, 3);
     box(10, 10, 10);
-        
+
+//SHOULDER CODE
+pushMatrix();
+fillSkinColor();
+translate(-10, -30, 62);
+translate(leftShoulderTranslationVal[0], leftShoulderTranslationVal[1], leftShoulderTranslationVal[2]); 
+rotateX(leftShoulderRotationVal[0]);
+rotateY(leftShoulderRotationVal[1]);
+rotateZ(leftShoulderRotationVal[2]);
+box(20, 30, 30);
+popMatrix();
+
+pushMatrix();
+translate(rightShoulderTranslationVal[0], rightShoulderTranslationVal[1], rightShoulderTranslationVal[2]); 
+rotateX(rightShoulderRotationVal[0]);
+rotateY(rightShoulderRotationVal[1]);
+rotateZ(rightShoulderRotationVal[2]);
+box(20, 30, 30);
+popMatrix();
     popMatrix();
     popMatrix();
     popMatrix();
