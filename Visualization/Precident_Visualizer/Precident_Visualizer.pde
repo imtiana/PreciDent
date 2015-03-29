@@ -14,9 +14,9 @@ char[] teapotPacket = new char[14];  // InvenSense Teapot packet
 int serialCount = 0;                 // current packet byte position
 int synced = 0;
 int interval = 0;
-float[] rightShoulderTranslationVal = {45, 0, -10};
-float[] leftShoulderTranslationVal = {-45, 0, -10};
-float[] leftShoulderRotationVal = {0, 0, 0};
+float[] rightShoulderTranslationVal = {40, -18, 52};
+float[] leftShoulderTranslationVal = {-45, 5, -10};
+float[] leftShoulderRotationVal = {0.3, 0, 0.3};
 float[] rightShoulderRotationVal = {0, 0, 0};
 //bad shoulder posture {0.2, 0.05, 0.3}
 
@@ -43,13 +43,13 @@ void setup() {
     //String portName = Serial.list()[0];
     
     // get a specific serial port (use EITHER this OR the first-available code above)
-    String portName = "COM3";
+    String portName = "COM4";
     
     // open the serial port
 //uncomment for arduino response    port = new Serial(this, portName, 115200);
     
     // send single character to trigger DMP init/start
-    // (expected by MPU6050_DMP6 example Ardu ino sketch)
+    // (expected by MPU6050_DMP6 example Arduino sketch)
 //uncomment for arduino response    port.write('r');
 }
 
@@ -108,8 +108,8 @@ void draw() {
     
     
 //TEST GEOMETRY CODE (REMOVE AFTER)
-rotateX(PI);
-rotateZ(-2*PI/3);
+//rotateX(PI);
+//rotateZ(-2*PI/3);
 //rotateX(PI/2);
 //rotateY(PI/2);
 //translate(width/10, -height);
@@ -163,8 +163,8 @@ rotateY(rightShoulderRotationVal[1]);
 rotateZ(rightShoulderRotationVal[2]);
 box(20, 30, 30);
 popMatrix();
-    popMatrix();
-    popMatrix();
+    
+    
     popMatrix();
       
      // draw arms here 
