@@ -14,6 +14,13 @@ char[] teapotPacket = new char[14];  // InvenSense Teapot packet
 int serialCount = 0;                 // current packet byte position
 int synced = 0;
 int interval = 0;
+short[] leftShoulderTranslationVal = new short[3]
+leftShoulderTranslationVal[0] = 45; leftShoulderTranslationVal[1] = 0; leftShoulderTranslationVal[2] = 10;
+short[] rightShoulderTranslationVal = new short[3];
+rightShoulderTranslationVal[0]= -45; rightShoulderTranslationVal[1] = 0; rightShoulderTranslationVal[2] = 10;
+//short[] leftShoulderRotationVal = new ;
+short[] rightShoulderRotationVal = new short[3];
+rightShoulderRotationVal[0] = 0.3; rightShoulderRotationVal[1] = 0.3; rightShoulderRotationVal[2] = 0;
 
 float[] q = new float[4];
 Quaternion quat = new Quaternion(1, 0, 0, 0);
@@ -118,15 +125,21 @@ rotateZ(-PI/2);
     pushMatrix();
 
 //SHOULDER CODE
-translate(-45, 0, -10); 
+translate(rightShoulderTranslationVal[0], rightShoulderTranslationVal[1], rightShoulderTranslationVal[2]); 
 box(20, 30, 30);
+rotateX(rightShoulderRotationVal[0]);
+rotateY(rightShoulderRotationVal[1]);
+rotateZ(rightShoulderRotationVal[2]);
 pushMatrix();
-translate(45,0,10);
+rotateX(-rightShoulderRotationVal[0]);
+rotateY(-rightShoulderRotationVal[1]);
+rotateZ(-rightShoulderRotationVal[2]);
+translate(-rightShoulderTranslationVal[0], -rightShoulderTranslationVal[1], -rightShoulderTranslationVal[2]);
 
-translate(45, 0, -10); 
+translate(leftShoulderTranslationVal[0], leftShoulderTranslationVal[1], leftShoulderTranslationVal[2]); 
 box(20, 30, 30);
 pushMatrix();
-translate(-45,0,10);
+translate(-leftShoulderTranslationVal[0], -leftShoulderTranslationVal[1], -leftShoulderTranslationVal[2]);
 
     //neck
     fillSkinColor(); 
