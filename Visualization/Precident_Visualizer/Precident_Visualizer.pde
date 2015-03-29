@@ -163,8 +163,8 @@ rotateY(rightShoulderRotationVal[1]);
 rotateZ(rightShoulderRotationVal[2]);
 box(20, 30, 30);
 popMatrix();
-    popMatrix();
-    popMatrix();
+    //popMatrix();
+    //popMatrix();
     popMatrix();
       
      // draw arms here 
